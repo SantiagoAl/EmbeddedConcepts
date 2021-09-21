@@ -183,24 +183,24 @@ void *Sequencer(void *threadp)
 	// Sequencing loop for LCM phasing of S1, S2
 	do
 	{
-	  // Basic sequence of releases after CI for 90% load
-		//
-		// S1: T1= 20, C1=10 msec 
-		// S2: T2= 50, C2=20 msec
-		//
-		// This is equivalent to a Cyclic Executive Loop where the major cycle is
-		// 100 milliseconds with a minor cycle of 20 milliseconds, but here we use
-		// pre-emption rather than a fixed schedule.
-		//
-		// Add to see what happens on edge of overload
-		// T3=100, C3=10 msec -- add for 100% utility
-		//
-		// Use of usleep is not ideal, but is sufficient for predictable response.
-		// Will most likely want to improve this using a real-time clock
-		//
-		// Final option is to write all real-time code as kernel tasks, more like
-		// an RTOS such as VxWorks.
-		//
+	  	// Basic sequence of releases after CI for 90% load
+      //
+      // S1: T1= 20, C1=10 msec 
+      // S2: T2= 50, C2=20 msec
+      //
+      // This is equivalent to a Cyclic Executive Loop where the major cycle is
+      // 100 milliseconds with a minor cycle of 20 milliseconds, but here we use
+      // pre-emption rather than a fixed schedule.
+      //
+      // Add to see what happens on edge of overload
+      // T3=100, C3=10 msec -- add for 100% utility
+      //
+      // Use of usleep is not ideal, but is sufficient for predictable response.
+      // Will most likely want to improve this using a real-time clock
+      //
+      // Final option is to write all real-time code as kernel tasks, more like
+      // an RTOS such as VxWorks.
+      //
 
 		// Simulate the C.I. for S1 and S2 and timestamp in log
 		printf("\n**** CI t=%lf\n", event_time = getTimeMsec() - start_time);
