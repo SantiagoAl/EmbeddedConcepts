@@ -183,7 +183,7 @@ void *Sequencer(void *threadp)
 	// Sequencing loop for LCM phasing of S1, S2
 	do
 	{
-		// Basic sequence of releases after CI for 90% load
+	  // Basic sequence of releases after CI for 90% load
       //
       // S1: T1= 20, C1=10 msec 
       // S2: T2= 50, C2=20 msec
@@ -196,7 +196,7 @@ void *Sequencer(void *threadp)
       // T3=100, C3=10 msec -- add for 100% utility
       //
       // Use of usleep is not ideal, but is sufficient for predictable response.
-	  // Will most likely want to improve this using a real-time clock
+      // Will most likely want to improve this using a real-time clock
       //
       // Final option is to write all real-time code as kernel tasks, more like
       // an RTOS such as VxWorks.
@@ -235,7 +235,7 @@ void main(void)
 	int i, rc, scope;
 	cpu_set_t threadcpu;
 	pthread_t threads[NUM_THREADS];
-    threadParams_t threadParams[NUM_THREADS];
+	threadParams_t threadParams[NUM_THREADS];
 	pthread_attr_t rt_sched_attr[NUM_THREADS];
 	int rt_max_prio, rt_min_prio;
 	struct sched_param rt_param[NUM_THREADS];
