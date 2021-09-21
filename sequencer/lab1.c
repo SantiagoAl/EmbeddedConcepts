@@ -302,17 +302,17 @@ void main(void)
 
 	// Create service threads which will block awaiting releases for: serviceF10
 	rc = pthread_create(&threads[1],					// pointer to thread descriptor
-				&rt_sched_attr[1],				// use specific attributes
-				fib10,							// thread function entry point
-				(void *)&(threadParams[1])		// parameters to pass in
-				);
+			&rt_sched_attr[1],				// use specific attributes
+			fib10,							// thread function entry point
+			(void *)&(threadParams[1])		// parameters to pass in
+			);
 
 	// servicef20
 	rc = pthread_create(&threads[2],						// pointer to thread descriptor
-				&rt_sched_attr[2],				// use specific attributes
-				fib20,							// thread fucntion entry point
-				(void *)&(threadParams[2])		// parameters to pass in
-				);
+			&rt_sched_attr[2],				// use specific attributes
+			fib20,							// thread fucntion entry point
+			(void *)&(threadParams[2])		// parameters to pass in
+			);
 
 	// Wait for service threads to calibrate and await a release by sequencer
 	usleep(300000);
@@ -322,10 +322,10 @@ void main(void)
 	threadParams[0].MajorPeriods = 3;
 
 	rc = pthread_create(&threads[0],						// pointer to thread descriptor
-				&rt_sched_attr[0],				// use specific attributes
-				Sequencer,						// thread fucntion entry point
-				(void *)&(threadParams[0])		// parameters to pass in
-				);
+			&rt_sched_attr[0],				// use specific attributes
+			Sequencer,						// thread fucntion entry point
+			(void *)&(threadParams[0])		// parameters to pass in
+			);
 
 	for (i = 0; i < NUM_THREADS; i++)
 		pthread_join(threads[i], NULL);
